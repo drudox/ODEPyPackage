@@ -3,34 +3,20 @@
 
 
 import numpy as np
-#import rhs
-#import euler
-#from  Solvers.Euler import euler
-from  ODE.Solvers.Euler import euler
-#from  Solvers.Euler 
-#from .. import euler
-from  ODE.Solvers.CentDiff import centdiff
-from  ODE.Rhs.rhs import Rhs
-#import rungekutta
 import matplotlib.pyplot as plt
 from datetime import datetime
-#import qualityplot
+
+from ODE.Solvers.Euler import euler
+from ODE.Solvers.CentDiff import centdiff
+from ODE.Rhs.rhs import Rhs
 from ODE.qualityPlot.qualityplot import *
-#import centdiff
 def main():
 
     start_time = datetime.now()
     a=4;
     c=1;
     
-#y1' = (2-.5*y2)*y1
-#y2' = (-1+.5*y1)*y2
-#Given initial conditions
-#The initial rabbit population is 6, the initial fox population is 2:
-
-#y1(0) = 6
-#y2(0) = 2
-           
+          
     # differential problem PREY-PREDATOR
 
     eq1 = lambda t,u : (2-0.5*u[1])*u[0]         #a*(u[0]-u[0]*u[1]);
@@ -84,70 +70,10 @@ def main():
 #             
 #    bet = np.genfromtxt('BWEuler_p1.dat',usecols=(0,)) 
 #    beu = np.genfromtxt('BWEuler_p1.dat',usecols=(1,)) 
-#    
-#    t0 = -10. 
-#    tf = 10.      
-#    u0 = y0   
-#    dt = 20/200 
-#    t,u = t0,u0 
-#    
-#    with open('ImpEuler_p1.dat', 'w') as f:
-#         while True:
-#             f.write('%10.4f %14.10f \n' %(t, u[0]) )
-#             u = euler.Implicit.step(func1,t,u,dt)
-#             t += dt
-#             if t > tf:
-#                break
-#             
-#    bt = np.genfromtxt('ImpEuler_p1.dat',usecols=(0,)) 
-#    bu = np.genfromtxt('ImpEuler_p1.dat',usecols=(1,)) 
-#    
-#    t0 = -10. 
-#    tf = 10.      
-#    u0 = y0   
-#    dt = 20/400 
-#    t,u = t0,u0 
-#    with open('SIEuler_p1.dat', 'w') as f:
-#         while True:
-#             f.write('%10.4f %14.10f \n' %(t, u[0]) )
-#             u = euler.SemiImplicit.step(func1,t,u,dt)
-#             t += dt
-#             if t > tf:
-#                break
-#             
-#    siet = np.genfromtxt('SIEuler_p1.dat',usecols=(0,)) 
-#    sieu = np.genfromtxt('SIEuler_p1.dat',usecols=(1,)) 
-#   
-#    t0 = -10. 
-#    tf = 10.      
-#    u0 = y0   
-#    dt = 20/2000 
-#    t,u = t0,u0 
-#    with open('AdamsMoulton5_p1.dat', 'w') as f:
-#        while True:
-#            f.write('%f %f \n' %(t, u[0]) )
-#            u = adamsmethods.AdamsMoulton._5th.step(func1,t,u,dt)
-#            t += dt
-#            if t > tf:
-#               break 
-#    
-#    amt = np.genfromtxt('AdamsMoulton5_p1.dat',usecols=(0,)) 
-#    amu = np.genfromtxt('AdamsMoulton5_p1.dat',usecols=(1,)) 
-
-
-
-
-
-
-
-
-
-# : a*(u[0]-u[0]*u[1]);
-#    eq2 = lambda t,u : -c*(u[1]-u[0]*u[1]);
-#-----------------------------------------------------------------------------------------------------   
+#---------------------------------------------------------------------------------------------   
     end_time = datetime.now()
     print('Duration {}'.format(end_time - start_time))
-            #**{'color': 'paraview'}
+ 
 ##############################################################################################    
     #fig,axs = qualityplot.Palatino(figsize=(9.5,4.5),**{'scheme':'vega'})(1,1)# ,**{'scheme':'nb'})
     
@@ -196,7 +122,7 @@ def main():
     #plt.setp(legend.get_texts(), color='#2E3436')
     axs.set(xlabel = 'time' ,ylabel='y(t)')
     axs.set_title('dy$_1$/dt= -4 (y$_1$ - y$_1$y$_2$)  ;  dy$_2$/dt = -1(y$_2$ - y$_1$y$_2$)',y=1.05)
-    #plt.savefig('system02.pdf')   
+    plt.savefig('ODE/Results/sys06.pdf')   
     plt.show()
 
 
